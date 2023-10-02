@@ -1,0 +1,423 @@
+2023-05-31 17:19:23,983 Namespace(cfg='experiments/toronto/face_alignment_toronto_hrnet_w18.yaml')
+2023-05-31 17:19:23,984 {'AUTO_RESUME': False,
+ 'CUDNN': CfgNode({'BENCHMARK': True, 'DETERMINISTIC': False, 'ENABLED': True}),
+ 'DATASET': {'DATASET': 'TORONTO',
+             'FLIP': True,
+             'ROOT': './data/toronto/images',
+             'ROT_FACTOR': 30,
+             'SCALE_FACTOR': 0.25,
+             'TESTSET': './data/toronto/face_landmarks_neuro_test.csv',
+             'TRAINSET': './data/toronto/face_landmarks_neuro_train.csv'},
+ 'GPUS': (0,),
+ 'LOG_DIR': 'log',
+ 'MODEL': {'EXTRA': {'FINAL_CONV_KERNEL': 1,
+                     'PRETRAINED_LAYERS': ['*'],
+                     'STAGE2': {'BLOCK': 'BASIC',
+                                'FUSE_METHOD': 'SUM',
+                                'NUM_BLOCKS': [4, 4],
+                                'NUM_BRANCHES': 2,
+                                'NUM_CHANNELS': [18, 36],
+                                'NUM_MODULES': 1},
+                     'STAGE3': {'BLOCK': 'BASIC',
+                                'FUSE_METHOD': 'SUM',
+                                'NUM_BLOCKS': [4, 4, 4],
+                                'NUM_BRANCHES': 3,
+                                'NUM_CHANNELS': [18, 36, 72],
+                                'NUM_MODULES': 4},
+                     'STAGE4': {'BLOCK': 'BASIC',
+                                'FUSE_METHOD': 'SUM',
+                                'NUM_BLOCKS': [4, 4, 4, 4],
+                                'NUM_BRANCHES': 4,
+                                'NUM_CHANNELS': [18, 36, 72, 144],
+                                'NUM_MODULES': 3},
+                     'STEM_INPLANES': 64,
+                     'WITH_HEAD': True},
+           'HEATMAP_SIZE': [64, 64],
+           'IMAGE_SIZE': [256, 256],
+           'INIT_WEIGHTS': True,
+           'NAME': 'hrnet',
+           'NUM_JOINTS': 68,
+           'PRETRAINED': './HR18-300W.pth',
+           'SIGMA': 1.0,
+           'TARGET_TYPE': 'Gaussian'},
+ 'OUTPUT_DIR': 'output',
+ 'PIN_MEMORY': True,
+ 'PRINT_FREQ': 50,
+ 'TEST': CfgNode({'BATCH_SIZE_PER_GPU': 8}),
+ 'TRAIN': {'BATCH_SIZE_PER_GPU': 16,
+           'BEGIN_EPOCH': 0,
+           'CHECKPOINT': '',
+           'END_EPOCH': 60,
+           'LR': 0.0001,
+           'LR_FACTOR': 0.1,
+           'LR_STEP': [30, 50],
+           'MOMENTUM': 0.0,
+           'NESTEROV': False,
+           'OPTIMIZER': 'adam',
+           'RESUME': True,
+           'SHUFFLE': True,
+           'WD': 0.0},
+ 'WORKERS': 1}
+2023-05-31 17:19:24,124 => init weights from normal distribution
+2023-05-31 17:19:26,709 => loading pretrained model ./HR18-300W.pth
+2023-05-31 17:19:30,224 Epoch: [0][0/146]	Time 2.930s (2.930s)	Speed 5.5 samples/s	Data 1.304s (1.304s)	Loss 0.00213 (0.00213)	
+2023-05-31 17:20:16,436 Epoch: [0][50/146]	Time 1.081s (0.964s)	Speed 14.8 samples/s	Data 0.529s (0.493s)	Loss 0.00076 (0.00085)	
+2023-05-31 17:21:05,359 Epoch: [0][100/146]	Time 1.040s (0.971s)	Speed 15.4 samples/s	Data 0.494s (0.473s)	Loss 0.00075 (0.00081)	
+2023-05-31 17:21:50,195 Train Epoch 0 time:0.9782 loss:0.0008 nme:0.6116
+2023-05-31 17:22:05,489 Test Epoch 0 time:0.2109 loss:0.0008 nme:0.9260 [008]:1.0000 [010]:1.0000
+2023-05-31 17:22:05,492 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:22:08,247 Epoch: [1][0/146]	Time 2.107s (2.107s)	Speed 7.6 samples/s	Data 1.508s (1.508s)	Loss 0.00073 (0.00073)	
+2023-05-31 17:22:49,521 Epoch: [1][50/146]	Time 0.929s (0.851s)	Speed 17.2 samples/s	Data 0.382s (0.299s)	Loss 0.00068 (0.00071)	
+2023-05-31 17:23:31,663 Epoch: [1][100/146]	Time 0.709s (0.847s)	Speed 22.6 samples/s	Data 0.142s (0.295s)	Loss 0.00064 (0.00068)	
+2023-05-31 17:24:10,908 Train Epoch 1 time:0.8540 loss:0.0007 nme:0.1440
+2023-05-31 17:24:23,884 Test Epoch 1 time:0.1789 loss:0.0008 nme:1.0731 [008]:1.0000 [010]:1.0000
+2023-05-31 17:24:23,887 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:24:26,151 Epoch: [2][0/146]	Time 1.771s (1.771s)	Speed 9.0 samples/s	Data 1.183s (1.183s)	Loss 0.00057 (0.00057)	
+2023-05-31 17:25:09,237 Epoch: [2][50/146]	Time 0.878s (0.880s)	Speed 18.2 samples/s	Data 0.327s (0.327s)	Loss 0.00057 (0.00058)	
+2023-05-31 17:25:52,300 Epoch: [2][100/146]	Time 0.941s (0.870s)	Speed 17.0 samples/s	Data 0.499s (0.369s)	Loss 0.00053 (0.00056)	
+2023-05-31 17:26:30,309 Train Epoch 2 time:0.8620 loss:0.0005 nme:0.1242
+2023-05-31 17:26:41,549 Test Epoch 2 time:0.1547 loss:0.0008 nme:0.6444 [008]:1.0000 [010]:1.0000
+2023-05-31 17:26:41,554 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:26:44,501 Epoch: [3][0/146]	Time 2.135s (2.135s)	Speed 7.5 samples/s	Data 1.592s (1.592s)	Loss 0.00053 (0.00053)	
+2023-05-31 17:27:27,103 Epoch: [3][50/146]	Time 1.106s (0.877s)	Speed 14.5 samples/s	Data 0.551s (0.326s)	Loss 0.00051 (0.00050)	
+2023-05-31 17:28:10,947 Epoch: [3][100/146]	Time 0.915s (0.877s)	Speed 17.5 samples/s	Data 0.473s (0.365s)	Loss 0.00051 (0.00049)	
+2023-05-31 17:28:49,380 Train Epoch 3 time:0.8694 loss:0.0005 nme:0.1224
+2023-05-31 17:29:00,731 Test Epoch 3 time:0.1564 loss:0.0008 nme:0.6156 [008]:1.0000 [010]:1.0000
+2023-05-31 17:29:00,734 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:29:03,536 Epoch: [4][0/146]	Time 1.939s (1.939s)	Speed 8.3 samples/s	Data 1.375s (1.375s)	Loss 0.00048 (0.00048)	
+2023-05-31 17:29:46,206 Epoch: [4][50/146]	Time 0.764s (0.875s)	Speed 21.0 samples/s	Data 0.323s (0.417s)	Loss 0.00042 (0.00046)	
+2023-05-31 17:30:28,066 Epoch: [4][100/146]	Time 0.855s (0.856s)	Speed 18.7 samples/s	Data 0.304s (0.383s)	Loss 0.00047 (0.00045)	
+2023-05-31 17:31:04,850 Train Epoch 4 time:0.8436 loss:0.0004 nme:0.1141
+2023-05-31 17:31:16,076 Test Epoch 4 time:0.1546 loss:0.0008 nme:0.2911 [008]:0.9757 [010]:0.9391
+2023-05-31 17:31:16,079 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:31:18,842 Epoch: [5][0/146]	Time 1.911s (1.911s)	Speed 8.4 samples/s	Data 1.380s (1.380s)	Loss 0.00044 (0.00044)	
+2023-05-31 17:32:02,569 Epoch: [5][50/146]	Time 0.854s (0.895s)	Speed 18.7 samples/s	Data 0.425s (0.460s)	Loss 0.00042 (0.00043)	
+2023-05-31 17:32:46,718 Epoch: [5][100/146]	Time 0.858s (0.889s)	Speed 18.6 samples/s	Data 0.431s (0.456s)	Loss 0.00041 (0.00042)	
+2023-05-31 17:33:25,262 Train Epoch 5 time:0.8784 loss:0.0004 nme:0.1155
+2023-05-31 17:33:37,837 Test Epoch 5 time:0.1735 loss:0.0005 nme:0.0541 [008]:0.0730 [010]:0.0087
+2023-05-31 17:33:37,840 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:33:40,558 Epoch: [6][0/146]	Time 1.963s (1.963s)	Speed 8.2 samples/s	Data 1.470s (1.470s)	Loss 0.00041 (0.00041)	
+2023-05-31 17:34:24,226 Epoch: [6][50/146]	Time 0.731s (0.895s)	Speed 21.9 samples/s	Data 0.297s (0.416s)	Loss 0.00038 (0.00040)	
+2023-05-31 17:35:06,448 Epoch: [6][100/146]	Time 0.938s (0.870s)	Speed 17.1 samples/s	Data 0.504s (0.412s)	Loss 0.00038 (0.00040)	
+2023-05-31 17:35:44,581 Train Epoch 6 time:0.8623 loss:0.0004 nme:0.1125
+2023-05-31 17:35:56,161 Test Epoch 6 time:0.1596 loss:0.0004 nme:0.0541 [008]:0.1130 [010]:0.0783
+2023-05-31 17:35:56,165 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:35:58,532 Epoch: [7][0/146]	Time 1.545s (1.545s)	Speed 10.4 samples/s	Data 1.070s (1.070s)	Loss 0.00039 (0.00039)	
+2023-05-31 17:36:42,833 Epoch: [7][50/146]	Time 0.944s (0.899s)	Speed 16.9 samples/s	Data 0.512s (0.464s)	Loss 0.00042 (0.00038)	
+2023-05-31 17:37:27,156 Epoch: [7][100/146]	Time 1.184s (0.893s)	Speed 13.5 samples/s	Data 0.749s (0.458s)	Loss 0.00042 (0.00038)	
+2023-05-31 17:38:05,319 Train Epoch 7 time:0.8784 loss:0.0004 nme:0.1128
+2023-05-31 17:38:16,870 Test Epoch 7 time:0.1591 loss:0.0004 nme:0.0474 [008]:0.0330 [010]:0.0157
+2023-05-31 17:38:16,874 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:38:19,371 Epoch: [8][0/146]	Time 1.678s (1.678s)	Speed 9.5 samples/s	Data 1.207s (1.207s)	Loss 0.00036 (0.00036)	
+2023-05-31 17:39:02,855 Epoch: [8][50/146]	Time 0.688s (0.885s)	Speed 23.2 samples/s	Data 0.256s (0.448s)	Loss 0.00035 (0.00037)	
+2023-05-31 17:39:45,466 Epoch: [8][100/146]	Time 0.943s (0.869s)	Speed 17.0 samples/s	Data 0.510s (0.433s)	Loss 0.00042 (0.00037)	
+2023-05-31 17:40:25,749 Train Epoch 8 time:0.8765 loss:0.0004 nme:0.1120
+2023-05-31 17:40:40,228 Test Epoch 8 time:0.2001 loss:0.0004 nme:0.0571 [008]:0.2104 [010]:0.1391
+2023-05-31 17:40:40,233 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:40:42,517 Epoch: [9][0/146]	Time 1.818s (1.818s)	Speed 8.8 samples/s	Data 1.284s (1.284s)	Loss 0.00036 (0.00036)	
+2023-05-31 17:41:27,383 Epoch: [9][50/146]	Time 0.855s (0.915s)	Speed 18.7 samples/s	Data 0.305s (0.372s)	Loss 0.00039 (0.00036)	
+2023-05-31 17:42:10,107 Epoch: [9][100/146]	Time 0.970s (0.885s)	Speed 16.5 samples/s	Data 0.540s (0.360s)	Loss 0.00038 (0.00035)	
+2023-05-31 17:42:46,141 Train Epoch 9 time:0.8586 loss:0.0004 nme:0.1101
+2023-05-31 17:42:58,390 Test Epoch 9 time:0.1691 loss:0.0005 nme:0.0672 [008]:0.2487 [010]:0.2035
+2023-05-31 17:42:58,392 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:43:00,420 Epoch: [10][0/146]	Time 1.583s (1.583s)	Speed 10.1 samples/s	Data 1.102s (1.102s)	Loss 0.00034 (0.00034)	
+2023-05-31 17:43:44,143 Epoch: [10][50/146]	Time 0.998s (0.888s)	Speed 16.0 samples/s	Data 0.448s (0.341s)	Loss 0.00036 (0.00035)	
+2023-05-31 17:44:25,495 Epoch: [10][100/146]	Time 0.765s (0.858s)	Speed 20.9 samples/s	Data 0.221s (0.310s)	Loss 0.00034 (0.00035)	
+2023-05-31 17:45:04,736 Train Epoch 10 time:0.8618 loss:0.0003 nme:0.1122
+2023-05-31 17:45:16,379 Test Epoch 10 time:0.1604 loss:0.0005 nme:0.0633 [008]:0.2104 [010]:0.1757
+2023-05-31 17:45:16,383 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:45:18,553 Epoch: [11][0/146]	Time 1.787s (1.787s)	Speed 9.0 samples/s	Data 1.297s (1.297s)	Loss 0.00033 (0.00033)	
+2023-05-31 17:46:03,893 Epoch: [11][50/146]	Time 0.826s (0.924s)	Speed 19.4 samples/s	Data 0.386s (0.477s)	Loss 0.00035 (0.00035)	
+2023-05-31 17:46:46,364 Epoch: [11][100/146]	Time 0.935s (0.887s)	Speed 17.1 samples/s	Data 0.507s (0.446s)	Loss 0.00036 (0.00034)	
+2023-05-31 17:47:25,621 Train Epoch 11 time:0.8819 loss:0.0003 nme:0.1101
+2023-05-31 17:47:40,223 Test Epoch 11 time:0.2016 loss:0.0004 nme:0.0543 [008]:0.1461 [010]:0.1165
+2023-05-31 17:47:40,227 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:47:42,583 Epoch: [12][0/146]	Time 1.939s (1.939s)	Speed 8.3 samples/s	Data 1.356s (1.356s)	Loss 0.00030 (0.00030)	
+2023-05-31 17:48:26,740 Epoch: [12][50/146]	Time 0.716s (0.904s)	Speed 22.3 samples/s	Data 0.167s (0.354s)	Loss 0.00030 (0.00033)	
+2023-05-31 17:49:08,892 Epoch: [12][100/146]	Time 0.916s (0.874s)	Speed 17.5 samples/s	Data 0.483s (0.373s)	Loss 0.00032 (0.00033)	
+2023-05-31 17:49:46,279 Train Epoch 12 time:0.8599 loss:0.0003 nme:0.1118
+2023-05-31 17:49:57,728 Test Epoch 12 time:0.1577 loss:0.0004 nme:0.0536 [008]:0.1409 [010]:0.0661
+2023-05-31 17:49:57,732 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:49:59,693 Epoch: [13][0/146]	Time 1.560s (1.560s)	Speed 10.3 samples/s	Data 1.091s (1.091s)	Loss 0.00032 (0.00032)	
+2023-05-31 17:50:40,235 Epoch: [13][50/146]	Time 0.894s (0.826s)	Speed 17.9 samples/s	Data 0.457s (0.390s)	Loss 0.00030 (0.00032)	
+2023-05-31 17:51:23,202 Epoch: [13][100/146]	Time 0.782s (0.842s)	Speed 20.5 samples/s	Data 0.337s (0.407s)	Loss 0.00026 (0.00031)	
+2023-05-31 17:52:01,401 Train Epoch 13 time:0.8437 loss:0.0003 nme:0.1083
+2023-05-31 17:52:12,916 Test Epoch 13 time:0.1586 loss:0.0004 nme:0.0495 [008]:0.0939 [010]:0.0383
+2023-05-31 17:52:12,921 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:52:15,250 Epoch: [14][0/146]	Time 1.881s (1.881s)	Speed 8.5 samples/s	Data 1.365s (1.365s)	Loss 0.00031 (0.00031)	
+2023-05-31 17:52:54,806 Epoch: [14][50/146]	Time 1.103s (0.812s)	Speed 14.5 samples/s	Data 0.657s (0.371s)	Loss 0.00030 (0.00032)	
+2023-05-31 17:53:37,921 Epoch: [14][100/146]	Time 0.763s (0.837s)	Speed 21.0 samples/s	Data 0.210s (0.341s)	Loss 0.00031 (0.00031)	
+2023-05-31 17:54:16,108 Train Epoch 14 time:0.8401 loss:0.0003 nme:0.1072
+2023-05-31 17:54:29,055 Test Epoch 14 time:0.1786 loss:0.0004 nme:0.0576 [008]:0.1704 [010]:0.0852
+2023-05-31 17:54:29,057 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:54:31,241 Epoch: [15][0/146]	Time 1.798s (1.798s)	Speed 8.9 samples/s	Data 1.331s (1.331s)	Loss 0.00028 (0.00028)	
+2023-05-31 17:55:13,268 Epoch: [15][50/146]	Time 0.653s (0.859s)	Speed 24.5 samples/s	Data 0.202s (0.426s)	Loss 0.00029 (0.00031)	
+2023-05-31 17:55:55,650 Epoch: [15][100/146]	Time 0.760s (0.854s)	Speed 21.1 samples/s	Data 0.327s (0.421s)	Loss 0.00029 (0.00031)	
+2023-05-31 17:56:32,111 Train Epoch 15 time:0.8396 loss:0.0003 nme:0.1070
+2023-05-31 17:56:43,533 Test Epoch 15 time:0.1574 loss:0.0004 nme:0.0554 [008]:0.1913 [010]:0.1165
+2023-05-31 17:56:43,536 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:56:45,740 Epoch: [16][0/146]	Time 1.833s (1.833s)	Speed 8.7 samples/s	Data 1.357s (1.357s)	Loss 0.00028 (0.00028)	
+2023-05-31 17:57:28,389 Epoch: [16][50/146]	Time 0.615s (0.872s)	Speed 26.0 samples/s	Data 0.065s (0.321s)	Loss 0.00031 (0.00031)	
+2023-05-31 17:58:10,859 Epoch: [16][100/146]	Time 0.704s (0.861s)	Speed 22.7 samples/s	Data 0.154s (0.309s)	Loss 0.00028 (0.00031)	
+2023-05-31 17:58:49,948 Train Epoch 16 time:0.8627 loss:0.0003 nme:0.1080
+2023-05-31 17:59:01,406 Test Epoch 16 time:0.1581 loss:0.0005 nme:0.1118 [008]:0.3252 [010]:0.2696
+2023-05-31 17:59:01,409 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 17:59:03,723 Epoch: [17][0/146]	Time 1.916s (1.916s)	Speed 8.4 samples/s	Data 1.430s (1.430s)	Loss 0.00028 (0.00028)	
+2023-05-31 17:59:46,778 Epoch: [17][50/146]	Time 0.732s (0.882s)	Speed 21.8 samples/s	Data 0.173s (0.329s)	Loss 0.00030 (0.00030)	
+2023-05-31 18:00:27,852 Epoch: [17][100/146]	Time 0.812s (0.852s)	Speed 19.7 samples/s	Data 0.261s (0.300s)	Loss 0.00027 (0.00031)	
+2023-05-31 18:01:05,438 Train Epoch 17 time:0.8462 loss:0.0003 nme:0.1072
+2023-05-31 18:01:16,799 Test Epoch 17 time:0.1567 loss:0.0005 nme:0.0697 [008]:0.2800 [010]:0.2470
+2023-05-31 18:01:16,802 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:01:19,039 Epoch: [18][0/146]	Time 1.777s (1.777s)	Speed 9.0 samples/s	Data 1.311s (1.311s)	Loss 0.00035 (0.00035)	
+2023-05-31 18:02:02,441 Epoch: [18][50/146]	Time 0.945s (0.886s)	Speed 16.9 samples/s	Data 0.508s (0.452s)	Loss 0.00036 (0.00030)	
+2023-05-31 18:02:46,565 Epoch: [18][100/146]	Time 0.749s (0.884s)	Speed 21.4 samples/s	Data 0.317s (0.452s)	Loss 0.00036 (0.00030)	
+2023-05-31 18:03:25,396 Train Epoch 18 time:0.8771 loss:0.0003 nme:0.1097
+2023-05-31 18:03:39,933 Test Epoch 18 time:0.2007 loss:0.0004 nme:0.0406 [008]:0.0052 [010]:0.0000
+2023-05-31 18:03:39,934 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:03:42,493 Epoch: [19][0/146]	Time 1.665s (1.665s)	Speed 9.6 samples/s	Data 1.086s (1.086s)	Loss 0.00029 (0.00029)	
+2023-05-31 18:04:26,408 Epoch: [19][50/146]	Time 0.756s (0.894s)	Speed 21.2 samples/s	Data 0.210s (0.344s)	Loss 0.00032 (0.00031)	
+2023-05-31 18:05:09,795 Epoch: [19][100/146]	Time 0.876s (0.881s)	Speed 18.3 samples/s	Data 0.327s (0.330s)	Loss 0.00032 (0.00030)	
+2023-05-31 18:05:47,409 Train Epoch 19 time:0.8664 loss:0.0003 nme:0.1081
+2023-05-31 18:06:02,038 Test Epoch 19 time:0.2019 loss:0.0004 nme:0.0561 [008]:0.2000 [010]:0.1774
+2023-05-31 18:06:02,041 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:06:04,307 Epoch: [20][0/146]	Time 1.884s (1.884s)	Speed 8.5 samples/s	Data 1.416s (1.416s)	Loss 0.00031 (0.00031)	
+2023-05-31 18:06:47,343 Epoch: [20][50/146]	Time 0.946s (0.881s)	Speed 16.9 samples/s	Data 0.515s (0.447s)	Loss 0.00025 (0.00028)	
+2023-05-31 18:07:31,033 Epoch: [20][100/146]	Time 0.647s (0.877s)	Speed 24.7 samples/s	Data 0.217s (0.444s)	Loss 0.00027 (0.00029)	
+2023-05-31 18:08:09,018 Train Epoch 20 time:0.8664 loss:0.0003 nme:0.1114
+2023-05-31 18:08:20,375 Test Epoch 20 time:0.1566 loss:0.0004 nme:0.0551 [008]:0.1652 [010]:0.1287
+2023-05-31 18:08:20,377 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:08:22,724 Epoch: [21][0/146]	Time 1.952s (1.952s)	Speed 8.2 samples/s	Data 1.472s (1.472s)	Loss 0.00026 (0.00026)	
+2023-05-31 18:09:05,844 Epoch: [21][50/146]	Time 0.827s (0.884s)	Speed 19.3 samples/s	Data 0.397s (0.342s)	Loss 0.00032 (0.00028)	
+2023-05-31 18:09:47,304 Epoch: [21][100/146]	Time 0.966s (0.857s)	Speed 16.6 samples/s	Data 0.531s (0.368s)	Loss 0.00028 (0.00028)	
+2023-05-31 18:10:26,595 Train Epoch 21 time:0.8612 loss:0.0003 nme:0.1096
+2023-05-31 18:10:37,975 Test Epoch 21 time:0.1571 loss:0.0004 nme:0.0555 [008]:0.1652 [010]:0.1061
+2023-05-31 18:10:37,977 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:10:40,197 Epoch: [22][0/146]	Time 1.780s (1.780s)	Speed 9.0 samples/s	Data 1.292s (1.292s)	Loss 0.00030 (0.00030)	
+2023-05-31 18:11:22,636 Epoch: [22][50/146]	Time 0.720s (0.867s)	Speed 22.2 samples/s	Data 0.171s (0.317s)	Loss 0.00028 (0.00028)	
+2023-05-31 18:12:06,991 Epoch: [22][100/146]	Time 0.869s (0.877s)	Speed 18.4 samples/s	Data 0.324s (0.327s)	Loss 0.00032 (0.00028)	
+2023-05-31 18:12:45,155 Train Epoch 22 time:0.8675 loss:0.0003 nme:0.1073
+2023-05-31 18:12:57,145 Test Epoch 22 time:0.1656 loss:0.0004 nme:0.0452 [008]:0.0870 [010]:0.0574
+2023-05-31 18:12:57,149 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:12:59,385 Epoch: [23][0/146]	Time 1.828s (1.828s)	Speed 8.8 samples/s	Data 1.365s (1.365s)	Loss 0.00027 (0.00027)	
+2023-05-31 18:13:44,769 Epoch: [23][50/146]	Time 1.263s (0.926s)	Speed 12.7 samples/s	Data 0.810s (0.494s)	Loss 0.00029 (0.00028)	
+2023-05-31 18:14:29,293 Epoch: [23][100/146]	Time 0.839s (0.908s)	Speed 19.1 samples/s	Data 0.412s (0.478s)	Loss 0.00032 (0.00028)	
+2023-05-31 18:15:08,291 Train Epoch 23 time:0.8949 loss:0.0003 nme:0.1120
+2023-05-31 18:15:23,006 Test Epoch 23 time:0.2032 loss:0.0004 nme:0.0541 [008]:0.1617 [010]:0.1252
+2023-05-31 18:15:23,009 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:15:25,116 Epoch: [24][0/146]	Time 1.681s (1.681s)	Speed 9.5 samples/s	Data 1.099s (1.099s)	Loss 0.00024 (0.00024)	
+2023-05-31 18:16:07,618 Epoch: [24][50/146]	Time 0.748s (0.866s)	Speed 21.4 samples/s	Data 0.201s (0.318s)	Loss 0.00031 (0.00027)	
+2023-05-31 18:16:50,583 Epoch: [24][100/146]	Time 0.821s (0.863s)	Speed 19.5 samples/s	Data 0.270s (0.314s)	Loss 0.00030 (0.00028)	
+2023-05-31 18:17:28,284 Train Epoch 24 time:0.8545 loss:0.0003 nme:0.1073
+2023-05-31 18:17:43,112 Test Epoch 24 time:0.2046 loss:0.0004 nme:0.0421 [008]:0.0313 [010]:0.0035
+2023-05-31 18:17:43,116 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:17:45,545 Epoch: [25][0/146]	Time 2.010s (2.010s)	Speed 8.0 samples/s	Data 1.426s (1.426s)	Loss 0.00028 (0.00028)	
+2023-05-31 18:18:28,868 Epoch: [25][50/146]	Time 0.873s (0.889s)	Speed 18.3 samples/s	Data 0.440s (0.391s)	Loss 0.00028 (0.00028)	
+2023-05-31 18:19:08,942 Epoch: [25][100/146]	Time 0.970s (0.846s)	Speed 16.5 samples/s	Data 0.531s (0.379s)	Loss 0.00025 (0.00028)	
+2023-05-31 18:19:46,751 Train Epoch 25 time:0.8433 loss:0.0003 nme:0.1073
+2023-05-31 18:19:58,155 Test Epoch 25 time:0.1571 loss:0.0005 nme:0.0632 [008]:0.2174 [010]:0.1617
+2023-05-31 18:19:58,158 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:20:00,338 Epoch: [26][0/146]	Time 1.779s (1.779s)	Speed 9.0 samples/s	Data 1.306s (1.306s)	Loss 0.00024 (0.00024)	
+2023-05-31 18:20:43,424 Epoch: [26][50/146]	Time 0.755s (0.880s)	Speed 21.2 samples/s	Data 0.320s (0.444s)	Loss 0.00026 (0.00026)	
+2023-05-31 18:21:25,594 Epoch: [26][100/146]	Time 0.916s (0.862s)	Speed 17.5 samples/s	Data 0.485s (0.427s)	Loss 0.00032 (0.00027)	
+2023-05-31 18:22:03,235 Train Epoch 26 time:0.8533 loss:0.0003 nme:0.1071
+2023-05-31 18:22:14,825 Test Epoch 26 time:0.1596 loss:0.0005 nme:0.0546 [008]:0.1757 [010]:0.0922
+2023-05-31 18:22:14,828 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:22:17,072 Epoch: [27][0/146]	Time 1.864s (1.864s)	Speed 8.6 samples/s	Data 1.393s (1.393s)	Loss 0.00026 (0.00026)	
+2023-05-31 18:22:58,930 Epoch: [27][50/146]	Time 0.752s (0.857s)	Speed 21.3 samples/s	Data 0.324s (0.421s)	Loss 0.00027 (0.00027)	
+2023-05-31 18:23:41,004 Epoch: [27][100/146]	Time 0.855s (0.849s)	Speed 18.7 samples/s	Data 0.422s (0.414s)	Loss 0.00029 (0.00027)	
+2023-05-31 18:24:18,675 Train Epoch 27 time:0.8451 loss:0.0003 nme:0.1054
+2023-05-31 18:24:30,118 Test Epoch 27 time:0.1579 loss:0.0004 nme:0.0550 [008]:0.1235 [010]:0.0939
+2023-05-31 18:24:30,121 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:24:32,361 Epoch: [28][0/146]	Time 1.862s (1.862s)	Speed 8.6 samples/s	Data 1.284s (1.284s)	Loss 0.00023 (0.00023)	
+2023-05-31 18:25:16,287 Epoch: [28][50/146]	Time 0.856s (0.898s)	Speed 18.7 samples/s	Data 0.425s (0.455s)	Loss 0.00027 (0.00027)	
+2023-05-31 18:25:57,681 Epoch: [28][100/146]	Time 0.944s (0.863s)	Speed 17.0 samples/s	Data 0.512s (0.425s)	Loss 0.00026 (0.00026)	
+2023-05-31 18:26:36,125 Train Epoch 28 time:0.8599 loss:0.0003 nme:0.1094
+2023-05-31 18:26:47,511 Test Epoch 28 time:0.1570 loss:0.0005 nme:0.0868 [008]:0.3183 [010]:0.2522
+2023-05-31 18:26:47,513 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:26:49,640 Epoch: [29][0/146]	Time 1.747s (1.747s)	Speed 9.2 samples/s	Data 1.271s (1.271s)	Loss 0.00025 (0.00025)	
+2023-05-31 18:27:31,532 Epoch: [29][50/146]	Time 0.594s (0.856s)	Speed 26.9 samples/s	Data 0.160s (0.315s)	Loss 0.00024 (0.00025)	
+2023-05-31 18:28:14,261 Epoch: [29][100/146]	Time 0.831s (0.855s)	Speed 19.3 samples/s	Data 0.399s (0.368s)	Loss 0.00024 (0.00024)	
+2023-05-31 18:28:50,680 Train Epoch 29 time:0.8404 loss:0.0002 nme:0.1039
+2023-05-31 18:29:02,226 Test Epoch 29 time:0.1590 loss:0.0005 nme:0.0580 [008]:0.2104 [010]:0.1200
+2023-05-31 18:29:02,227 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:29:04,395 Epoch: [30][0/146]	Time 1.787s (1.787s)	Speed 9.0 samples/s	Data 1.313s (1.313s)	Loss 0.00026 (0.00026)	
+2023-05-31 18:29:48,353 Epoch: [30][50/146]	Time 0.885s (0.897s)	Speed 18.1 samples/s	Data 0.452s (0.461s)	Loss 0.00025 (0.00023)	
+2023-05-31 18:30:31,661 Epoch: [30][100/146]	Time 0.932s (0.882s)	Speed 17.2 samples/s	Data 0.502s (0.447s)	Loss 0.00022 (0.00023)	
+2023-05-31 18:31:10,103 Train Epoch 30 time:0.8726 loss:0.0002 nme:0.1051
+2023-05-31 18:31:21,541 Test Epoch 30 time:0.1578 loss:0.0005 nme:0.0556 [008]:0.1774 [010]:0.0904
+2023-05-31 18:31:21,545 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:31:23,746 Epoch: [31][0/146]	Time 1.772s (1.772s)	Speed 9.0 samples/s	Data 1.306s (1.306s)	Loss 0.00020 (0.00020)	
+2023-05-31 18:32:06,946 Epoch: [31][50/146]	Time 1.145s (0.882s)	Speed 14.0 samples/s	Data 0.594s (0.403s)	Loss 0.00025 (0.00022)	
+2023-05-31 18:32:51,886 Epoch: [31][100/146]	Time 1.096s (0.890s)	Speed 14.6 samples/s	Data 0.547s (0.376s)	Loss 0.00020 (0.00022)	
+2023-05-31 18:33:31,761 Train Epoch 31 time:0.8884 loss:0.0002 nme:0.1081
+2023-05-31 18:33:43,144 Test Epoch 31 time:0.1570 loss:0.0004 nme:0.0529 [008]:0.1565 [010]:0.0643
+2023-05-31 18:33:43,147 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:33:45,292 Epoch: [32][0/146]	Time 1.774s (1.774s)	Speed 9.0 samples/s	Data 1.309s (1.309s)	Loss 0.00023 (0.00023)	
+2023-05-31 18:34:29,689 Epoch: [32][50/146]	Time 0.925s (0.905s)	Speed 17.3 samples/s	Data 0.457s (0.468s)	Loss 0.00025 (0.00022)	
+2023-05-31 18:35:13,773 Epoch: [32][100/146]	Time 0.896s (0.894s)	Speed 17.8 samples/s	Data 0.469s (0.459s)	Loss 0.00020 (0.00022)	
+2023-05-31 18:35:51,487 Train Epoch 32 time:0.8760 loss:0.0002 nme:0.1058
+2023-05-31 18:36:05,430 Test Epoch 32 time:0.1925 loss:0.0004 nme:0.0500 [008]:0.1096 [010]:0.0504
+2023-05-31 18:36:05,432 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:36:07,217 Epoch: [33][0/146]	Time 1.397s (1.397s)	Speed 11.4 samples/s	Data 0.937s (0.937s)	Loss 0.00022 (0.00022)	
+2023-05-31 18:36:50,571 Epoch: [33][50/146]	Time 0.735s (0.877s)	Speed 21.8 samples/s	Data 0.300s (0.443s)	Loss 0.00022 (0.00022)	
+2023-05-31 18:37:33,388 Epoch: [33][100/146]	Time 0.740s (0.867s)	Speed 21.6 samples/s	Data 0.307s (0.433s)	Loss 0.00024 (0.00022)	
+2023-05-31 18:38:11,216 Train Epoch 33 time:0.8583 loss:0.0002 nme:0.1049
+2023-05-31 18:38:23,010 Test Epoch 33 time:0.1627 loss:0.0004 nme:0.0479 [008]:0.0922 [010]:0.0452
+2023-05-31 18:38:23,013 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:38:25,103 Epoch: [34][0/146]	Time 1.710s (1.710s)	Speed 9.4 samples/s	Data 1.144s (1.144s)	Loss 0.00022 (0.00022)	
+2023-05-31 18:39:09,299 Epoch: [34][50/146]	Time 0.692s (0.900s)	Speed 23.1 samples/s	Data 0.142s (0.351s)	Loss 0.00020 (0.00022)	
+2023-05-31 18:39:52,696 Epoch: [34][100/146]	Time 0.718s (0.884s)	Speed 22.3 samples/s	Data 0.168s (0.335s)	Loss 0.00022 (0.00022)	
+2023-05-31 18:40:31,073 Train Epoch 34 time:0.8739 loss:0.0002 nme:0.1058
+2023-05-31 18:40:42,901 Test Epoch 34 time:0.1631 loss:0.0004 nme:0.0483 [008]:0.0887 [010]:0.0383
+2023-05-31 18:40:42,907 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:40:45,352 Epoch: [35][0/146]	Time 1.978s (1.978s)	Speed 8.1 samples/s	Data 1.378s (1.378s)	Loss 0.00021 (0.00021)	
+2023-05-31 18:41:27,523 Epoch: [35][50/146]	Time 1.037s (0.866s)	Speed 15.4 samples/s	Data 0.491s (0.315s)	Loss 0.00023 (0.00022)	
+2023-05-31 18:42:09,935 Epoch: [35][100/146]	Time 0.990s (0.857s)	Speed 16.2 samples/s	Data 0.443s (0.308s)	Loss 0.00024 (0.00022)	
+2023-05-31 18:42:48,971 Train Epoch 35 time:0.8596 loss:0.0002 nme:0.1033
+2023-05-31 18:43:00,492 Test Epoch 35 time:0.1588 loss:0.0004 nme:0.0510 [008]:0.1287 [010]:0.0400
+2023-05-31 18:43:00,498 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:43:02,414 Epoch: [36][0/146]	Time 1.522s (1.522s)	Speed 10.5 samples/s	Data 1.047s (1.047s)	Loss 0.00022 (0.00022)	
+2023-05-31 18:43:46,697 Epoch: [36][50/146]	Time 0.776s (0.898s)	Speed 20.6 samples/s	Data 0.340s (0.457s)	Loss 0.00020 (0.00022)	
+2023-05-31 18:44:30,100 Epoch: [36][100/146]	Time 0.973s (0.883s)	Speed 16.4 samples/s	Data 0.537s (0.444s)	Loss 0.00021 (0.00022)	
+2023-05-31 18:45:10,316 Train Epoch 36 time:0.8859 loss:0.0002 nme:0.1048
+2023-05-31 18:45:24,709 Test Epoch 36 time:0.1987 loss:0.0004 nme:0.0528 [008]:0.1391 [010]:0.0557
+2023-05-31 18:45:24,711 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:45:27,192 Epoch: [37][0/146]	Time 2.056s (2.056s)	Speed 7.8 samples/s	Data 1.459s (1.459s)	Loss 0.00019 (0.00019)	
+2023-05-31 18:46:11,151 Epoch: [37][50/146]	Time 0.868s (0.902s)	Speed 18.4 samples/s	Data 0.438s (0.438s)	Loss 0.00023 (0.00022)	
+2023-05-31 18:46:53,486 Epoch: [37][100/146]	Time 0.670s (0.875s)	Speed 23.9 samples/s	Data 0.122s (0.402s)	Loss 0.00023 (0.00022)	
+2023-05-31 18:47:30,568 Train Epoch 37 time:0.8585 loss:0.0002 nme:0.1030
+2023-05-31 18:47:42,087 Test Epoch 37 time:0.1586 loss:0.0004 nme:0.0496 [008]:0.1200 [010]:0.0417
+2023-05-31 18:47:42,089 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:47:44,074 Epoch: [38][0/146]	Time 1.580s (1.580s)	Speed 10.1 samples/s	Data 1.108s (1.108s)	Loss 0.00022 (0.00022)	
+2023-05-31 18:48:27,709 Epoch: [38][50/146]	Time 0.724s (0.887s)	Speed 22.1 samples/s	Data 0.298s (0.453s)	Loss 0.00021 (0.00022)	
+2023-05-31 18:49:10,297 Epoch: [38][100/146]	Time 1.016s (0.869s)	Speed 15.7 samples/s	Data 0.578s (0.432s)	Loss 0.00023 (0.00021)	
+2023-05-31 18:49:49,250 Train Epoch 38 time:0.8675 loss:0.0002 nme:0.1043
+2023-05-31 18:50:00,558 Test Epoch 38 time:0.1559 loss:0.0004 nme:0.0490 [008]:0.0939 [010]:0.0296
+2023-05-31 18:50:00,561 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:50:02,947 Epoch: [39][0/146]	Time 2.003s (2.003s)	Speed 8.0 samples/s	Data 1.524s (1.524s)	Loss 0.00021 (0.00021)	
+2023-05-31 18:50:47,871 Epoch: [39][50/146]	Time 0.874s (0.920s)	Speed 18.3 samples/s	Data 0.444s (0.478s)	Loss 0.00023 (0.00022)	
+2023-05-31 18:51:31,949 Epoch: [39][100/146]	Time 0.682s (0.901s)	Speed 23.5 samples/s	Data 0.255s (0.463s)	Loss 0.00020 (0.00022)	
+2023-05-31 18:52:09,719 Train Epoch 39 time:0.8815 loss:0.0002 nme:0.1030
+2023-05-31 18:52:21,047 Test Epoch 39 time:0.1564 loss:0.0004 nme:0.0482 [008]:0.0800 [010]:0.0330
+2023-05-31 18:52:21,048 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:52:23,190 Epoch: [40][0/146]	Time 1.769s (1.769s)	Speed 9.0 samples/s	Data 1.173s (1.173s)	Loss 0.00024 (0.00024)	
+2023-05-31 18:53:04,303 Epoch: [40][50/146]	Time 0.719s (0.841s)	Speed 22.3 samples/s	Data 0.280s (0.342s)	Loss 0.00021 (0.00021)	
+2023-05-31 18:53:46,235 Epoch: [40][100/146]	Time 0.894s (0.840s)	Speed 17.9 samples/s	Data 0.462s (0.373s)	Loss 0.00021 (0.00021)	
+2023-05-31 18:54:24,463 Train Epoch 40 time:0.8421 loss:0.0002 nme:0.1022
+2023-05-31 18:54:36,009 Test Epoch 40 time:0.1590 loss:0.0005 nme:0.0535 [008]:0.1635 [010]:0.0626
+2023-05-31 18:54:36,014 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:54:38,469 Epoch: [41][0/146]	Time 2.049s (2.049s)	Speed 7.8 samples/s	Data 1.407s (1.407s)	Loss 0.00020 (0.00020)	
+2023-05-31 18:55:22,250 Epoch: [41][50/146]	Time 0.951s (0.899s)	Speed 16.8 samples/s	Data 0.403s (0.345s)	Loss 0.00023 (0.00022)	
+2023-05-31 18:56:05,246 Epoch: [41][100/146]	Time 0.731s (0.879s)	Speed 21.9 samples/s	Data 0.303s (0.379s)	Loss 0.00020 (0.00021)	
+2023-05-31 18:56:43,212 Train Epoch 41 time:0.8678 loss:0.0002 nme:0.1046
+2023-05-31 18:56:54,618 Test Epoch 41 time:0.1573 loss:0.0005 nme:0.0530 [008]:0.1565 [010]:0.0626
+2023-05-31 18:56:54,621 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:56:57,013 Epoch: [42][0/146]	Time 2.016s (2.016s)	Speed 7.9 samples/s	Data 1.544s (1.544s)	Loss 0.00020 (0.00020)	
+2023-05-31 18:57:40,332 Epoch: [42][50/146]	Time 0.738s (0.889s)	Speed 21.7 samples/s	Data 0.308s (0.421s)	Loss 0.00022 (0.00021)	
+2023-05-31 18:58:21,491 Epoch: [42][100/146]	Time 0.686s (0.856s)	Speed 23.3 samples/s	Data 0.254s (0.405s)	Loss 0.00019 (0.00021)	
+2023-05-31 18:58:59,127 Train Epoch 42 time:0.8496 loss:0.0002 nme:0.1013
+2023-05-31 18:59:10,658 Test Epoch 42 time:0.1591 loss:0.0004 nme:0.0503 [008]:0.1026 [010]:0.0383
+2023-05-31 18:59:10,660 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 18:59:12,714 Epoch: [43][0/146]	Time 1.620s (1.620s)	Speed 9.9 samples/s	Data 1.148s (1.148s)	Loss 0.00018 (0.00018)	
+2023-05-31 18:59:57,179 Epoch: [43][50/146]	Time 0.869s (0.904s)	Speed 18.4 samples/s	Data 0.440s (0.471s)	Loss 0.00019 (0.00021)	
+2023-05-31 19:00:39,843 Epoch: [43][100/146]	Time 0.555s (0.879s)	Speed 28.8 samples/s	Data 0.120s (0.447s)	Loss 0.00019 (0.00021)	
+2023-05-31 19:01:18,578 Train Epoch 43 time:0.8725 loss:0.0002 nme:0.1063
+2023-05-31 19:01:33,211 Test Epoch 43 time:0.2020 loss:0.0004 nme:0.0492 [008]:0.1096 [010]:0.0296
+2023-05-31 19:01:33,213 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:01:35,561 Epoch: [44][0/146]	Time 1.918s (1.918s)	Speed 8.3 samples/s	Data 1.336s (1.336s)	Loss 0.00021 (0.00021)	
+2023-05-31 19:02:18,315 Epoch: [44][50/146]	Time 0.788s (0.876s)	Speed 20.3 samples/s	Data 0.225s (0.327s)	Loss 0.00021 (0.00022)	
+2023-05-31 19:03:01,545 Epoch: [44][100/146]	Time 0.899s (0.870s)	Speed 17.8 samples/s	Data 0.353s (0.322s)	Loss 0.00023 (0.00021)	
+2023-05-31 19:03:38,007 Train Epoch 44 time:0.8512 loss:0.0002 nme:0.1030
+2023-05-31 19:03:49,476 Test Epoch 44 time:0.1582 loss:0.0004 nme:0.0471 [008]:0.0765 [010]:0.0174
+2023-05-31 19:03:49,480 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:03:51,681 Epoch: [45][0/146]	Time 1.825s (1.825s)	Speed 8.8 samples/s	Data 1.247s (1.247s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:04:33,882 Epoch: [45][50/146]	Time 0.769s (0.863s)	Speed 20.8 samples/s	Data 0.340s (0.423s)	Loss 0.00022 (0.00021)	
+2023-05-31 19:05:16,711 Epoch: [45][100/146]	Time 1.058s (0.860s)	Speed 15.1 samples/s	Data 0.513s (0.370s)	Loss 0.00022 (0.00021)	
+2023-05-31 19:05:53,220 Train Epoch 45 time:0.8443 loss:0.0002 nme:0.1031
+2023-05-31 19:06:07,908 Test Epoch 45 time:0.2026 loss:0.0004 nme:0.0463 [008]:0.0730 [010]:0.0174
+2023-05-31 19:06:07,912 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:06:10,285 Epoch: [46][0/146]	Time 1.955s (1.955s)	Speed 8.2 samples/s	Data 1.360s (1.360s)	Loss 0.00021 (0.00021)	
+2023-05-31 19:06:52,790 Epoch: [46][50/146]	Time 0.748s (0.872s)	Speed 21.4 samples/s	Data 0.314s (0.432s)	Loss 0.00020 (0.00021)	
+2023-05-31 19:07:34,736 Epoch: [46][100/146]	Time 0.533s (0.855s)	Speed 30.0 samples/s	Data 0.098s (0.418s)	Loss 0.00021 (0.00021)	
+2023-05-31 19:08:12,087 Train Epoch 46 time:0.8471 loss:0.0002 nme:0.1011
+2023-05-31 19:08:26,553 Test Epoch 46 time:0.1996 loss:0.0004 nme:0.0506 [008]:0.1217 [010]:0.0435
+2023-05-31 19:08:26,557 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:08:28,907 Epoch: [47][0/146]	Time 1.978s (1.978s)	Speed 8.1 samples/s	Data 1.386s (1.386s)	Loss 0.00021 (0.00021)	
+2023-05-31 19:09:10,030 Epoch: [47][50/146]	Time 0.915s (0.845s)	Speed 17.5 samples/s	Data 0.490s (0.404s)	Loss 0.00019 (0.00021)	
+2023-05-31 19:09:53,455 Epoch: [47][100/146]	Time 1.088s (0.857s)	Speed 14.7 samples/s	Data 0.663s (0.422s)	Loss 0.00023 (0.00021)	
+2023-05-31 19:10:31,159 Train Epoch 47 time:0.8503 loss:0.0002 nme:0.1027
+2023-05-31 19:10:42,461 Test Epoch 47 time:0.1560 loss:0.0004 nme:0.0504 [008]:0.1252 [010]:0.0383
+2023-05-31 19:10:42,465 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:10:44,774 Epoch: [48][0/146]	Time 1.920s (1.920s)	Speed 8.3 samples/s	Data 1.429s (1.429s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:11:28,291 Epoch: [48][50/146]	Time 0.860s (0.891s)	Speed 18.6 samples/s	Data 0.428s (0.432s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:12:11,394 Epoch: [48][100/146]	Time 0.941s (0.877s)	Speed 17.0 samples/s	Data 0.510s (0.431s)	Loss 0.00022 (0.00021)	
+2023-05-31 19:12:50,373 Train Epoch 48 time:0.8728 loss:0.0002 nme:0.1059
+2023-05-31 19:13:01,753 Test Epoch 48 time:0.1569 loss:0.0004 nme:0.0469 [008]:0.0835 [010]:0.0139
+2023-05-31 19:13:01,755 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:13:03,809 Epoch: [49][0/146]	Time 1.652s (1.652s)	Speed 9.7 samples/s	Data 1.180s (1.180s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:13:47,269 Epoch: [49][50/146]	Time 0.756s (0.885s)	Speed 21.2 samples/s	Data 0.209s (0.336s)	Loss 0.00021 (0.00021)	
+2023-05-31 19:14:29,111 Epoch: [49][100/146]	Time 0.872s (0.861s)	Speed 18.3 samples/s	Data 0.328s (0.312s)	Loss 0.00021 (0.00020)	
+2023-05-31 19:15:07,325 Train Epoch 49 time:0.8567 loss:0.0002 nme:0.1053
+2023-05-31 19:15:18,992 Test Epoch 49 time:0.1607 loss:0.0004 nme:0.0467 [008]:0.0661 [010]:0.0157
+2023-05-31 19:15:18,996 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:15:21,192 Epoch: [50][0/146]	Time 1.818s (1.818s)	Speed 8.8 samples/s	Data 1.356s (1.356s)	Loss 0.00019 (0.00019)	
+2023-05-31 19:16:04,859 Epoch: [50][50/146]	Time 1.171s (0.892s)	Speed 13.7 samples/s	Data 0.731s (0.461s)	Loss 0.00019 (0.00021)	
+2023-05-31 19:16:47,909 Epoch: [50][100/146]	Time 0.776s (0.877s)	Speed 20.6 samples/s	Data 0.346s (0.447s)	Loss 0.00023 (0.00020)	
+2023-05-31 19:17:26,457 Train Epoch 50 time:0.8698 loss:0.0002 nme:0.1039
+2023-05-31 19:17:38,938 Test Epoch 50 time:0.1720 loss:0.0004 nme:0.0475 [008]:0.0748 [010]:0.0174
+2023-05-31 19:17:38,942 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:17:41,008 Epoch: [51][0/146]	Time 1.648s (1.648s)	Speed 9.7 samples/s	Data 1.062s (1.062s)	Loss 0.00024 (0.00024)	
+2023-05-31 19:18:25,248 Epoch: [51][50/146]	Time 0.849s (0.900s)	Speed 18.9 samples/s	Data 0.301s (0.349s)	Loss 0.00020 (0.00021)	
+2023-05-31 19:19:08,287 Epoch: [51][100/146]	Time 0.671s (0.880s)	Speed 23.8 samples/s	Data 0.124s (0.331s)	Loss 0.00018 (0.00020)	
+2023-05-31 19:19:47,650 Train Epoch 51 time:0.8781 loss:0.0002 nme:0.1074
+2023-05-31 19:19:59,244 Test Epoch 51 time:0.1598 loss:0.0004 nme:0.0483 [008]:0.0991 [010]:0.0174
+2023-05-31 19:19:59,247 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:20:01,335 Epoch: [52][0/146]	Time 1.693s (1.693s)	Speed 9.5 samples/s	Data 1.225s (1.225s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:20:47,498 Epoch: [52][50/146]	Time 1.169s (0.938s)	Speed 13.7 samples/s	Data 0.737s (0.504s)	Loss 0.00021 (0.00020)	
+2023-05-31 19:21:31,426 Epoch: [52][100/146]	Time 0.926s (0.909s)	Speed 17.3 samples/s	Data 0.488s (0.475s)	Loss 0.00022 (0.00020)	
+2023-05-31 19:22:10,572 Train Epoch 52 time:0.8962 loss:0.0002 nme:0.1071
+2023-05-31 19:22:22,440 Test Epoch 52 time:0.1635 loss:0.0004 nme:0.0486 [008]:0.0904 [010]:0.0174
+2023-05-31 19:22:22,444 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:22:24,405 Epoch: [53][0/146]	Time 1.565s (1.565s)	Speed 10.2 samples/s	Data 1.097s (1.097s)	Loss 0.00018 (0.00018)	
+2023-05-31 19:23:08,193 Epoch: [53][50/146]	Time 0.960s (0.889s)	Speed 16.7 samples/s	Data 0.521s (0.454s)	Loss 0.00018 (0.00020)	
+2023-05-31 19:23:49,962 Epoch: [53][100/146]	Time 0.937s (0.863s)	Speed 17.1 samples/s	Data 0.502s (0.428s)	Loss 0.00022 (0.00020)	
+2023-05-31 19:24:28,419 Train Epoch 53 time:0.8596 loss:0.0002 nme:0.1019
+2023-05-31 19:24:39,864 Test Epoch 53 time:0.1578 loss:0.0004 nme:0.0494 [008]:0.1078 [010]:0.0226
+2023-05-31 19:24:39,866 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:24:42,066 Epoch: [54][0/146]	Time 1.827s (1.827s)	Speed 8.8 samples/s	Data 1.355s (1.355s)	Loss 0.00022 (0.00022)	
+2023-05-31 19:25:24,932 Epoch: [54][50/146]	Time 0.763s (0.876s)	Speed 21.0 samples/s	Data 0.330s (0.430s)	Loss 0.00019 (0.00020)	
+2023-05-31 19:26:07,945 Epoch: [54][100/146]	Time 0.594s (0.868s)	Speed 26.9 samples/s	Data 0.162s (0.428s)	Loss 0.00023 (0.00020)	
+2023-05-31 19:26:45,911 Train Epoch 54 time:0.8602 loss:0.0002 nme:0.1021
+2023-05-31 19:26:57,676 Test Epoch 54 time:0.1620 loss:0.0004 nme:0.0484 [008]:0.1009 [010]:0.0174
+2023-05-31 19:26:57,679 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:26:59,776 Epoch: [55][0/146]	Time 1.666s (1.666s)	Speed 9.6 samples/s	Data 1.193s (1.193s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:27:44,746 Epoch: [55][50/146]	Time 0.738s (0.914s)	Speed 21.7 samples/s	Data 0.308s (0.443s)	Loss 0.00018 (0.00020)	
+2023-05-31 19:28:28,070 Epoch: [55][100/146]	Time 0.997s (0.891s)	Speed 16.1 samples/s	Data 0.550s (0.437s)	Loss 0.00019 (0.00020)	
+2023-05-31 19:29:06,918 Train Epoch 55 time:0.8816 loss:0.0002 nme:0.1077
+2023-05-31 19:29:18,431 Test Epoch 55 time:0.1587 loss:0.0004 nme:0.0491 [008]:0.1026 [010]:0.0174
+2023-05-31 19:29:18,434 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:29:20,643 Epoch: [56][0/146]	Time 1.835s (1.835s)	Speed 8.7 samples/s	Data 1.367s (1.367s)	Loss 0.00021 (0.00021)	
+2023-05-31 19:30:05,310 Epoch: [56][50/146]	Time 1.198s (0.912s)	Speed 13.4 samples/s	Data 0.740s (0.480s)	Loss 0.00021 (0.00020)	
+2023-05-31 19:30:47,354 Epoch: [56][100/146]	Time 0.773s (0.877s)	Speed 20.7 samples/s	Data 0.339s (0.447s)	Loss 0.00021 (0.00020)	
+2023-05-31 19:31:26,791 Train Epoch 56 time:0.8759 loss:0.0002 nme:0.1074
+2023-05-31 19:31:40,695 Test Epoch 56 time:0.1919 loss:0.0004 nme:0.0488 [008]:0.1009 [010]:0.0174
+2023-05-31 19:31:40,698 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:31:43,234 Epoch: [57][0/146]	Time 2.106s (2.106s)	Speed 7.6 samples/s	Data 1.524s (1.524s)	Loss 0.00021 (0.00021)	
+2023-05-31 19:32:24,733 Epoch: [57][50/146]	Time 0.708s (0.855s)	Speed 22.6 samples/s	Data 0.274s (0.414s)	Loss 0.00019 (0.00020)	
+2023-05-31 19:33:06,378 Epoch: [57][100/146]	Time 0.616s (0.844s)	Speed 26.0 samples/s	Data 0.180s (0.405s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:33:44,291 Train Epoch 57 time:0.8430 loss:0.0002 nme:0.1039
+2023-05-31 19:33:56,502 Test Epoch 57 time:0.1682 loss:0.0004 nme:0.0500 [008]:0.1113 [010]:0.0209
+2023-05-31 19:33:56,508 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:33:58,618 Epoch: [58][0/146]	Time 1.730s (1.730s)	Speed 9.2 samples/s	Data 1.144s (1.144s)	Loss 0.00020 (0.00020)	
+2023-05-31 19:34:42,115 Epoch: [58][50/146]	Time 1.143s (0.887s)	Speed 14.0 samples/s	Data 0.712s (0.416s)	Loss 0.00022 (0.00020)	
+2023-05-31 19:35:23,751 Epoch: [58][100/146]	Time 0.605s (0.860s)	Speed 26.4 samples/s	Data 0.173s (0.408s)	Loss 0.00017 (0.00020)	
+2023-05-31 19:36:01,123 Train Epoch 58 time:0.8505 loss:0.0002 nme:0.1045
+2023-05-31 19:36:14,421 Test Epoch 58 time:0.1833 loss:0.0004 nme:0.0496 [008]:0.1078 [010]:0.0191
+2023-05-31 19:36:14,425 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:36:16,762 Epoch: [59][0/146]	Time 1.952s (1.952s)	Speed 8.2 samples/s	Data 1.484s (1.484s)	Loss 0.00019 (0.00019)	
+2023-05-31 19:36:59,669 Epoch: [59][50/146]	Time 0.869s (0.880s)	Speed 18.4 samples/s	Data 0.434s (0.445s)	Loss 0.00019 (0.00020)	
+2023-05-31 19:37:40,749 Epoch: [59][100/146]	Time 0.667s (0.851s)	Speed 24.0 samples/s	Data 0.235s (0.418s)	Loss 0.00019 (0.00020)	
+2023-05-31 19:38:18,696 Train Epoch 59 time:0.8479 loss:0.0002 nme:0.1025
+2023-05-31 19:38:30,048 Test Epoch 59 time:0.1566 loss:0.0004 nme:0.0503 [008]:0.1061 [010]:0.0243
+2023-05-31 19:38:30,051 => saving checkpoint to output/TORONTO/face_alignment_toronto_hrnet_w18
+2023-05-31 19:38:30,419 saving final model state to output/TORONTO/face_alignment_toronto_hrnet_w18/final_state.pth
