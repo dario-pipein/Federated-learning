@@ -24,9 +24,7 @@ import time
 import calendar
 from codecarbon import OfflineEmissionsTracker
 
-
-def parse_args():
-
+def test():
     parser = argparse.ArgumentParser(description='Train Face Alignment')
 
     parser.add_argument('--cfg', help='experiment configuration filename',
@@ -35,12 +33,6 @@ def parse_args():
 
     args = parser.parse_args()
     update_config(config, args)
-    return args
-
-
-def main():
-
-    args = parse_args()
 
     print(args.cfg)
     print(args.model_file)
@@ -110,6 +102,6 @@ def main():
     torch.save(predictions, os.path.join(final_output_dir, 'predictions_FINAL_3B.pth'))
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 

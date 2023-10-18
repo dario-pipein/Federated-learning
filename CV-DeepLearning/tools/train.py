@@ -27,10 +27,8 @@ from pathlib import Path
 import time
 import calendar
 from codecarbon import OfflineEmissionsTracker
-
-
-def parse_args():
-
+ 
+def train(train_loader, val_loader):
     parser = argparse.ArgumentParser(description='Train Face Alignment')
 
     parser.add_argument('--cfg', help='experiment configuration filename',
@@ -38,12 +36,6 @@ def parse_args():
 
     args = parser.parse_args()
     update_config(config, args)
-    return args
-
-
-def main():
-
-    args = parse_args()
 
     print(args.cfg)
 
@@ -180,8 +172,8 @@ def main():
     writer_dict['writer'].close()
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 
 
 
