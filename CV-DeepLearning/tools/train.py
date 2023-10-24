@@ -13,7 +13,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
 from tensorboardX import SummaryWriter
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, random_split
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 import lib.models as models
@@ -27,18 +27,30 @@ from pathlib import Path
 import time
 import calendar
 from codecarbon import OfflineEmissionsTracker
- 
-def train(train_loader, val_loader):
-    parser = argparse.ArgumentParser(description='Train Face Alignment')
 
-    parser.add_argument('--cfg', help='experiment configuration filename',
-                        required=True, type=str)
+# def parse_args():
+
+#     parser = argparse.ArgumentParser(description='Train Face Alignment')
+
+#     parser.add_argument('--cfg', help='experiment configuration filename',
+#                         required=True, type=str)
+
+#     args = parser.parse_args()
+#     update_config(config, args)
+#     return args
+
+def train(train_loader, val_loader):
+
+    # args = parse_args()
+    parser = argparse.ArgumentParser(description='Train Face Alignment')
+    model = 'CV-DeepLearning/hrnetv2_w18_imagenet_pretrained.pth'
+    parser.add_argument('--cfg', default=model, help='experiment configuration filename')#,
+                        # required=True, type=str)
 
     args = parser.parse_args()
     update_config(config, args)
-
     print(args.cfg)
-
+          
     logger, final_output_dir, tb_log_dir = \
         utils.create_logger(config, args.cfg, 'train')
 
@@ -99,32 +111,23 @@ def train(train_loader, val_loader):
             config.TRAIN.LR_FACTOR, last_epoch-1
         )
 
-    #CHRIS
-    '''
-    state_dict = torch.load(args.model_file) #MAX, map_location=torch.device('cpu')) uncomment if cpu
-    if 'state_dict' not in state_dict.keys():
-        # state_dict = state_dict['state_dict']
-        model.load_state_dict(state_dict)
-    else:
-        model.module.load_state_dict(state_dict)
-    '''
+    # dataset_type = get_dataset(config)
+    # trainset = dataset_type(config, is_train=0),
 
-    dataset_type = get_dataset(config)
+    # train_loader = DataLoader(
+    #     dataset=trainset,#dataset_type(config, is_train=0),
+    #     batch_size=config.TRAIN.BATCH_SIZE_PER_GPU*len(gpus),
+    #     shuffle=config.TRAIN.SHUFFLE,
+    #     num_workers=config.WORKERS,
+    #     pin_memory=config.PIN_MEMORY)
 
-    train_loader = DataLoader(
-        dataset=dataset_type(config, is_train=0),
-        batch_size=config.TRAIN.BATCH_SIZE_PER_GPU*len(gpus),
-        shuffle=config.TRAIN.SHUFFLE,
-        num_workers=config.WORKERS,
-        pin_memory=config.PIN_MEMORY)
-
-    val_loader = DataLoader(
-        dataset=dataset_type(config, is_train=1),
-        batch_size=config.TEST.BATCH_SIZE_PER_GPU*len(gpus),
-        shuffle=False,
-        num_workers=config.WORKERS,
-        pin_memory=config.PIN_MEMORY
-    )
+    # val_loader = DataLoader(
+    #     dataset=dataset_type(config, is_train=1),
+    #     batch_size=config.TEST.BATCH_SIZE_PER_GPU*len(gpus),
+    #     shuffle=False,
+    #     num_workers=config.WORKERS,
+    #     pin_memory=config.PIN_MEMORY
+    # )
 
     #Startare il carbon footprint tracker
     tracker = OfflineEmissionsTracker(country_iso_code="ITA")
