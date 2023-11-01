@@ -2,8 +2,8 @@ import flwr as fl
 from flwr.common import Metrics
 from typing import List, Tuple
 from collections import OrderedDict
-from tools.train import train
-from tools.test import test
+from train import train
+from test import test
 import torch
 from torch.utils.data import DataLoader, random_split
 from lib.datasets import get_dataset
@@ -94,6 +94,7 @@ def ds_partition(set, num_clients):
     """Split the dataset into num_clients partitions"""
     partition_size = len(set) // num_clients
     lengths = [partition_size] * num_clients
+    lengths[-1] = lengths[-1]+len(set)-partition_size*num_clients
     set = random_split(set, lengths, torch.Generator().manual_seed(42))
     return set
 
@@ -103,10 +104,10 @@ def main():
 
     # Create FedAvg strategy
     strategy = fl.server.strategy.FedAvg(
-        fraction_fit            =1.0,           # Sample 100% of available clients for training
-        fraction_evaluate       =0.5,           # Sample 50% of available clients for evaluation
-        min_fit_clients         =10,            # Never sample less than 10 clients for training
-        min_evaluate_clients    =5,             # Never sample less than 5 clients for evaluation
+        fraction_fit            =1.0,           # 1.0 : Sample 100% of available clients for training
+        fraction_evaluate       =0.5,           # 0.5 : Sample 50% of available clients for evaluation
+        min_fit_clients         =10,            # 10  : Never sample less than 10 clients for training
+        min_evaluate_clients    =5,             # 5   : Never sample less than 5 clients for evaluation
         min_available_clients   =NUM_CLIENTS,   # Wait until all clients are available
     )
 
