@@ -43,7 +43,7 @@ def train(train_loader, val_loader):
 
     # args = parse_args()
     parser = argparse.ArgumentParser(description='Train Face Alignment')
-    model = 'CV-DeepLearning/hrnetv2_w18_imagenet_pretrained.pth'
+    model = 'D:/Tesi master/Federated-learning/CV-DeepLearning/hrnetv2_w18_imagenet_pretrained.pth'
     parser.add_argument('--cfg', default=model, help='experiment configuration filename')#,
                         # required=True, type=str)
 
@@ -111,23 +111,23 @@ def train(train_loader, val_loader):
             config.TRAIN.LR_FACTOR, last_epoch-1
         )
 
-    # dataset_type = get_dataset(config)
-    # trainset = dataset_type(config, is_train=0),
+    dataset_type = get_dataset(config)
+    trainset = dataset_type(config, is_train=0),
 
-    # train_loader = DataLoader(
-    #     dataset=trainset,#dataset_type(config, is_train=0),
-    #     batch_size=config.TRAIN.BATCH_SIZE_PER_GPU*len(gpus),
-    #     shuffle=config.TRAIN.SHUFFLE,
-    #     num_workers=config.WORKERS,
-    #     pin_memory=config.PIN_MEMORY)
+    train_loader = DataLoader(
+        dataset=trainset,#dataset_type(config, is_train=0),
+        batch_size=config.TRAIN.BATCH_SIZE_PER_GPU*len(gpus),
+        shuffle=config.TRAIN.SHUFFLE,
+        num_workers=config.WORKERS,
+        pin_memory=config.PIN_MEMORY)
 
-    # val_loader = DataLoader(
-    #     dataset=dataset_type(config, is_train=1),
-    #     batch_size=config.TEST.BATCH_SIZE_PER_GPU*len(gpus),
-    #     shuffle=False,
-    #     num_workers=config.WORKERS,
-    #     pin_memory=config.PIN_MEMORY
-    # )
+    val_loader = DataLoader(
+        dataset=dataset_type(config, is_train=1),
+        batch_size=config.TEST.BATCH_SIZE_PER_GPU*len(gpus),
+        shuffle=False,
+        num_workers=config.WORKERS,
+        pin_memory=config.PIN_MEMORY
+    )
 
     #Startare il carbon footprint tracker
     tracker = OfflineEmissionsTracker(country_iso_code="ITA")
@@ -176,7 +176,7 @@ def train(train_loader, val_loader):
 
 
 # if __name__ == '__main__':
-#     main()
+#     train()
 
 
 
