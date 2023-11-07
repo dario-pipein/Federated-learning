@@ -31,9 +31,6 @@ import calendar
 from codecarbon import OfflineEmissionsTracker
 
 ''''''
-NUM_CLIENTS = 2
-DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-
 def test():
     parser = argparse.ArgumentParser(description='Train Face Alignment')
     model = 'D:/Tesi master/Federated-learning/CV-DeepLearning/hrnetv2_w18_imagenet_pretrained.pth'
@@ -334,7 +331,12 @@ def ds_partition(set, num_clients):
     return set
 
 def main():
-
+    global train_loaders
+    global val_loaders
+    global NUM_CLIENTS
+    
+    NUM_CLIENTS = 2
+    DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     train_loaders, val_loaders = load_Dataset(config)
 
     # Create FedAvg strategy
