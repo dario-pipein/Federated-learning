@@ -252,7 +252,7 @@ def get_parameters(net) -> List[np.ndarray]:
 def set_parameters(net, parameters: List[np.ndarray]):
     """Update the local model with parameters received from the server"""
     params_dict = zip(net.state_dict().keys(), parameters)
-    state_dict = OrderedDict({k: torch.Tensor(v) for k, v in params_dict})
+    state_dict = OrderedDict({k: torch.Tensor(v) if v.shape != torch.Size([]) else torch.Tensor([0]) for k, v in params_dict})
     net.load_state_dict(state_dict, strict=True)
 
 class FlowerClient(fl.client.NumPyClient):
@@ -265,7 +265,7 @@ class FlowerClient(fl.client.NumPyClient):
     def get_parameters(self, config):
         return get_parameters(self.net)
 
-    def fit(self, parameters, config):
+    def fit(self, parameters, config): # local train
         set_parameters(self.net, parameters)
         train(self.net, self.trainloader)
         return get_parameters(self.net), len(self.trainloader), {}
@@ -355,7 +355,7 @@ def main():
 
     # Start simulation
     fl.simulation.start_simulation(
-        client_fn=client_fn,#(train_loaders, val_loaders),
+        client_fn=client_fn,
         num_clients=NUM_CLIENTS,
         config=fl.server.ServerConfig(num_rounds=5),
         strategy=strategy,
